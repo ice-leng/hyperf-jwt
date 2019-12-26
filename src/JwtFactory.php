@@ -13,6 +13,6 @@ class JwtFactory
     public function __invoke(ContainerInterface $container)
     {
         $config = $container->get(ConfigInterface::class);
-        return make(Jwt::class, $config->get('jwt', []));
+        return make(Jwt::class, [$config->get('jwt', [])]);
     }
 }
