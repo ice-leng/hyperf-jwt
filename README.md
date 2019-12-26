@@ -27,12 +27,12 @@ or add
 to the require section of your `composer.json` file.
 
 
-Request
+Request [详情](https://github.com/ice-leng/jwt)
 -------
 ```
 "lengbin/jwt": "dev-master"
 ```
-[详情](https://github.com/ice-leng/jwt)
+
 Configs
 -----
 ``` php
