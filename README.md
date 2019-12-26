@@ -81,15 +81,21 @@ class IndexController extends AbstractController
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
+        // 生成token
         $token = $this->jwt->makeToken([
              'method'  => $method,
              'message' => "Hello {$user}.",
          ]);
-
-        // $this->jwt->makeRefreshToken(11122);
+        //生成 刷新token
+        // $exp = 11122;
+        // $this->jwt->makeRefreshToken($exp);
+        //验证
         // $this->jwt->verify($token);
+        // 获得自定义参数 转为数组
         // $this->jwt->claimsAsArray();
+        //刷新token
         // $this->jwt->refreshToken();
+        //注销
         // $this->jwt->logout();
         return [
             'method'  => $method,
