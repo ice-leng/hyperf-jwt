@@ -32,6 +32,7 @@ Request
 ```
 "lengbin/jwt": "dev-master"
 ```
+[详情](https://github.com/ice-leng/jwt)
 Configs
 -----
 ``` php
@@ -79,7 +80,7 @@ namespace App\Controller;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
-use Lengbin\Jwt\OauthInterface;
+use Lengbin\Jwt\TokenInterface;
 
 /**
  * Class IndexController
@@ -91,7 +92,7 @@ class IndexController extends AbstractController
 
     /**
      * @Inject()
-     * @var OauthInterface
+     * @var TokenInterface
      */
     public $jwt;
 
@@ -114,8 +115,8 @@ class IndexController extends AbstractController
         // $this->jwt->makeRefreshToken($exp);
         //验证
         // $this->jwt->verify($token);
-        // 获得自定义参数 转为数组
-        // $this->jwt->claimsAsArray();
+        // 获得自定义参数
+        // $this->jwt->getParams();
         //刷新token
         // $this->jwt->refreshToken();
         //注销
@@ -128,6 +129,5 @@ class IndexController extends AbstractController
     }
 
 }
-
 
 ```
