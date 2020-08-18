@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Lengbin\Hyperf\Jwt;
 
-use Lengbin\Jwt\TokenInterface;
+use Lengbin\Jwt\JwtInterface;
 
 class ConfigProvider
 {
@@ -20,7 +20,7 @@ class ConfigProvider
     {
         return [
             'dependencies' => [
-                TokenInterface::class => JwtFactory::class
+                JwtInterface::class => JwtFactory::class
             ],
             'publish' => [
                 [
