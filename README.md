@@ -39,24 +39,14 @@ Configs
     /config/autoload/jwt.php
     
     return [
-        //加密类型, 支持类型请看 supportedAlgs
-        'alg'        => 256,
-        //私钥，可以是字符串也可以是文件路径
-        'privateKey' => '',
-        //公钥，可以是字符串也可以是文件路径
-        'publicKey'  => '',
-        //key,
-        'key'        => 'ice',
-        //发行人
-        'iss'        => '',
-        //接受者
-        'aud'        => '',
-        //在多少秒之前不可使用
-        'nbf'        => 0,
-        //过期时间
-        'exp'        => 7200,
-        // 黑名单缓存类，
-        'cache'      => \Hyperf\Cache\Cache::class,
+        'alg' => 'HMACSHA256',
+        'key' => 'ice',
+        // jwt 过期时间
+        'exp' => 2 * 3600,
+        // 刷新token 过期时间
+        'ttl' => 24 * 3600 * 30,
+        // 是否 单点登录
+        'sso' => false
     ];
 ```
 
@@ -80,7 +70,7 @@ namespace App\Controller;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
-use Lengbin\Jwt\TokenInterface;
+use Lengbin\Jwt\JwtInterface;
 
 /**
  * Class IndexController
@@ -92,7 +82,7 @@ class IndexController extends AbstractController
 
     /**
      * @Inject()
-     * @var TokenInterface
+     * @var JwtInterface
      */
     public $jwt;
 
@@ -112,13 +102,11 @@ class IndexController extends AbstractController
          ]);
         //生成 刷新token
         // $exp = 11122;
-        // $this->jwt->makeRefreshToken($exp);
-        //验证
-        // $this->jwt->verify($token);
-        // 获得自定义参数
-        // $this->jwt->getParams();
-        //刷新token
-        // $this->jwt->refreshToken();
+        // $this->jwt->generate($exp);
+        //验证 获得自定义参数
+        // $this->jwt->verifyToken($token);
+        // 生成 刷新token
+        // $this->jwt->generateRefreshToken();
         //注销
         // $this->jwt->logout();
         return [
