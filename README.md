@@ -100,13 +100,12 @@ class IndexController extends AbstractController
              'method'  => $method,
              'message' => "Hello {$user}.",
          ]);
-        //生成 刷新token
-        // $exp = 11122;
+        // 生成 刷新token
         // $this->jwt->generate($exp);
-        //验证 获得自定义参数
-        // $this->jwt->verifyToken($token);
         // 生成 刷新token
         // $this->jwt->generateRefreshToken();
+        // 验证 获得自定义参数
+        // $this->jwt->verifyToken($token);
         //注销
         // $this->jwt->logout();
         return [
